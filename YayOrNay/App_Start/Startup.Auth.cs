@@ -54,9 +54,9 @@ namespace YayOrNay
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "972908792777852",
+               appSecret: "15518b6eb79d13682ee5a67d39d7e08e");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
