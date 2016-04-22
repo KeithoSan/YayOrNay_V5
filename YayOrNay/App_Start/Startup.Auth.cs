@@ -58,11 +58,14 @@ namespace YayOrNay
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "934596652669-n1denh30ip32er82quvj8fekqs75m7j1.apps.googleusercontent.com",
+                ClientSecret = "8XwGB9U_vGtW0p6NBgVb24b8"
+            });
         }
     }
 }
+
+
+
