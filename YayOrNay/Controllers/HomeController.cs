@@ -6,8 +6,11 @@ using System.Web.Mvc;
 using YayOrNay.Models;
 using PagedList;
 
+
+
 namespace YayOrNay.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         YayOrNayDb _db = new YayOrNayDb();
