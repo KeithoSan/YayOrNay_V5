@@ -22,7 +22,7 @@ namespace YayOrNay.Controllers
 
 
 
-
+           //Adding some search function
         public ActionResult Index(string movieGenre, string searchString)
         {
             var GenreLst = new List<string>();
