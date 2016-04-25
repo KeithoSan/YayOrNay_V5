@@ -15,26 +15,66 @@ namespace YayOrNay.Controllers
         private YayOrNayDb db = new YayOrNayDb();
 
         // GET: Movie
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.Movies.ToList());
+        //}
+
+
+
+
+        public ActionResult Index(string movieGenre, string searchString)
         {
-            return View(db.Movies.ToList());
+            var GenreLst = new List<string>();
+
+            var GenreQry = from d in db.Movies
+                           orderby d.Genre
+                           select d.Genre;
+
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.movieGenre = new SelectList(GenreLst);
+
+            var movies = from m in db.Movies
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Genre == movieGenre);
+            }
+
+            return View(movies);
         }
 
-        //// GET: Movie/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Movie movie = db.Movies.Find(id);
-        //    if (movie == null)
-        //    {
-                
-        //        return HttpNotFound();
-        //    }
-        //    return View(movie);
-        //}
+
+
+
+
+
+
+
+
+        // GET: Movie/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            // LINQ query that fetches the movies from the database to bring back releated files.
+            Movie movie  = db.Movies.Include(s => s.Files).SingleOrDefault(s => s.Id == id);
+            if (movie == null)
+            {
+
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
 
         // GET: Movie/Create
         public ActionResult Create()
@@ -47,12 +87,34 @@ namespace YayOrNay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Genre,Certificate")] Movie movie)
+        public ActionResult Create([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate")] Movie movie, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
-                db.SaveChanges();
+
+
+                //upload image in controller 
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    movie.Files = new List<File> { avatar };
+                }
+
+
+
+             
+                    db.Movies.Add(movie);
+                    db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 

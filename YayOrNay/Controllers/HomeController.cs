@@ -52,7 +52,9 @@ namespace YayOrNay.Controllers
 
                  .Select(r => new MovieListViewModel
                          {
+                     
                              Id = r.Id,
+                             //Files = r.Files,
                              Title = r.Title,
                              Genre = r.Genre,
                              Certificate = r.Certificate,
@@ -87,7 +89,7 @@ namespace YayOrNay.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Would you like to contact me?";
 
             return View();
         }

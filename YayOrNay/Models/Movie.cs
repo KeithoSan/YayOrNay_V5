@@ -13,6 +13,11 @@ namespace YayOrNay.Models
         public string Genre { get; set; }
         public string Certificate { get; set; }
 
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime ReleaseDate { get; set; }
+
+
         //public double AverageRating
         //{
         //    get
@@ -30,16 +35,8 @@ namespace YayOrNay.Models
         //        }
         //    }
         //}
-  
 
-
-
-
-
-
-
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime ReleaseDate { get; set; }
+            
 
 
         //public double Rating { get; set; }
@@ -47,6 +44,7 @@ namespace YayOrNay.Models
 
 
         public virtual ICollection<MovieReview> Reviews { get; set; }
+        public virtual ICollection<File> Files { get; set; }
 
     }
 }

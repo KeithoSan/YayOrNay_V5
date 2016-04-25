@@ -14,5 +14,6 @@ namespace YayOrNay.Models
         }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MovieReview> Reviews { get; set; }
+        public DbSet<File> Files { get; set; }
     }
 }

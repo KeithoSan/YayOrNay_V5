@@ -8,6 +8,20 @@
 
 
 
+<p>
+  
+
+    @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+    {
+    <p>
+        Genre: @Html.DropDownList("movieGenre", "All")
+        Title: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
+    }
+    </p>
+
+
 
 
 <p>
@@ -28,6 +42,8 @@
         <th>
             @Html.DisplayNameFor(model => model.ReleaseDate)
         </th>
+
+       
 
         <th></th>
     </tr>
