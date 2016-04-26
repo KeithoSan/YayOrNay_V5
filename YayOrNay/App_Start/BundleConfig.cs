@@ -33,7 +33,7 @@ namespace YayOrNay
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css",                       
                       "~/Content/site.css", "~/Content/PagedList.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

@@ -9,28 +9,6 @@
     padding-right: 15px;
 }
 
-
-
-/*main content added to layout*/
-.main-content {
-        
-        padding-left: 10px;
-        padding-top: 30px;
-    }
-
-    .featured + .main-content {
-        
-    }
-
-header .content-wrapper {
-    padding-top: 20px; 
-}
-
-
-
-
-
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -43,19 +21,4 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-
-.review{
-    padding:2px;
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
-}
-
-.review h4{
-    color:maroon;
-    padding: 5px;
-    background: #cccc99;
-}
-.review{
-    font-size: .8em;
 }
