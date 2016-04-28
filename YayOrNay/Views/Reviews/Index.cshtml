@@ -14,8 +14,13 @@
 
 
 <p>
-    @Html.ActionLink("Create New", "Create", new { movieID = Model.Id})
+    <div>
+        @Html.ActionLink("Write a Review for  ", "Create", new { movieID = Model.Id }) <font size="2">"@Model.Title"</font>
+
+        
+    </div>
 </p>
+<FORM><INPUT Type="button" VALUE="Go Back" onClick="history.go(-1);return true;"></FORM>
 
 
 

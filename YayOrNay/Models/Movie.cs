@@ -32,6 +32,11 @@ namespace YayOrNay.Models
         public DateTime ReleaseDate { get; set; }
 
 
+        [StringLength(1000)]
+        public string Description { get; set; }
+
+
+
         //public double AverageRating
         //{
         //    get
@@ -50,7 +55,7 @@ namespace YayOrNay.Models
         //    }
         //}
 
-            
+
 
 
         //public double Rating { get; set; }

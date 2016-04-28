@@ -17,9 +17,17 @@
     @foreach (var item in Model)
     {
         <div>
-            <h4>@item.Title</h4>
+            <h4>
+                @item.Title
+                @*@Html.ActionLink(@item.Title, "Index", "Reviews", new { id = item.Id }, null)*@ 
+            </h4>
+
+
+
+
             <div>
-                            
+                <p> Description: 
+                <br />@item.Description</p>
                 <p>Genre: @item.Genre</p>
                 <p>Certifications: @item.Certificate</p>
 
@@ -27,7 +35,10 @@
                 
 
                 <div>
-                    Reviews: @item.CountOfReviews
+
+                    @Html.ActionLink("Reviews: ", "Index", "Reviews", new { id = item.Id }, null) <b>@item.CountOfReviews</b>
+                    
+                    
                 </div>
 
                 <hr />

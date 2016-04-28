@@ -241,9 +241,13 @@
     <Compile Include="Migrations\201604221753326_Files.Designer.cs">
       <DependentUpon>201604221753326_Files.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604261534016_movie.cs" />
-    <Compile Include="Migrations\201604261534016_movie.Designer.cs">
-      <DependentUpon>201604261534016_movie.cs</DependentUpon>
+    <Compile Include="Migrations\201604281804457_Movies.cs" />
+    <Compile Include="Migrations\201604281804457_Movies.Designer.cs">
+      <DependentUpon>201604281804457_Movies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604281807573_Movies1.cs" />
+    <Compile Include="Migrations\201604281807573_Movies1.Designer.cs">
+      <DependentUpon>201604281807573_Movies1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
@@ -479,8 +483,11 @@
     <EmbeddedResource Include="Migrations\201604221753326_Files.resx">
       <DependentUpon>201604221753326_Files.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604261534016_movie.resx">
-      <DependentUpon>201604261534016_movie.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604281804457_Movies.resx">
+      <DependentUpon>201604281804457_Movies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281807573_Movies1.resx">
+      <DependentUpon>201604281807573_Movies1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

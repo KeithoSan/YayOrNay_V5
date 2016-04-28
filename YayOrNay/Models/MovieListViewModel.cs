@@ -12,7 +12,7 @@ namespace YayOrNay.Models
         public string Title { get; set; }
         public string Genre { get; set; }
         public string Certificate { get; set; }
-
+        public string Description { get; set; }
 
         public virtual ICollection<File> Files { get; set; }
         //public double AverageRating

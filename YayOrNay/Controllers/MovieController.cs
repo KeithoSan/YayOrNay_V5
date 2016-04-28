@@ -149,7 +149,7 @@ namespace YayOrNay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate")] Movie movie, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate, Description")] Movie movie, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -203,7 +203,7 @@ namespace YayOrNay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate, Description")] Movie movie)
         {
             if (ModelState.IsValid)
             {

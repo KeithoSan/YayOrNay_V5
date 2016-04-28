@@ -52,7 +52,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","Movie")
+    <FORM><INPUT Type="button" VALUE="Go Back" onClick="history.go(-1);return true;"></FORM>
+
 </div>
 
 @section Scripts {

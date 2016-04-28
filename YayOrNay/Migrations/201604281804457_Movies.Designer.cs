@@ -7,13 +7,13 @@ namespace YayOrNay.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class movie : IMigrationMetadata
+    public sealed partial class Movies : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(movie));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Movies));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604261534016_movie"; }
+            get { return "201604281804457_Movies"; }
         }
         
         string IMigrationMetadata.Source

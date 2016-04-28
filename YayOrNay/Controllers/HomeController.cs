@@ -57,13 +57,14 @@ namespace YayOrNay.Controllers
                          {
                      
                              Id = r.Id,
-                             //Files = r.Files,
-                             Title = r.Title,
+                     //Files = r.Files,
+                            Description = r.Description,
+                            Title = r.Title,
                              Genre = r.Genre,
                              Certificate = r.Certificate,
                              ReleaseDate = r.ReleaseDate,
                              CountOfReviews = r.Reviews.Count()
-                         }).ToPagedList(page, 10);
+                         }).ToPagedList(page, 1);
 
 
 
