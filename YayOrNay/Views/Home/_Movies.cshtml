@@ -6,10 +6,13 @@
 <div id="movieList">
 
     <div class="pagedList" data-yon-target="#movieList">
+       
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
        PagedListRenderOptions.MinimalWithItemCountText)
     </div>
 
+
+   
 
     @foreach (var item in Model)
     {

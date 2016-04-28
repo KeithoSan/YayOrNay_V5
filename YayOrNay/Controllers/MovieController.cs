@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YayOrNay.Models;
+using PagedList;
 
 namespace YayOrNay.Controllers
 {
@@ -22,9 +23,53 @@ namespace YayOrNay.Controllers
 
 
 
-           //Adding some search function
-        public ActionResult Index(string movieGenre, string searchString)
+        //Adding some search function
+        //public ActionResult Index(string movieGenre, string searchString)
+        //{
+        //    var GenreLst = new List<string>();
+
+        //    var GenreQry = from d in db.Movies
+        //                   orderby d.Genre
+        //                   select d.Genre;
+
+        //    GenreLst.AddRange(GenreQry.Distinct());
+        //    ViewBag.movieGenre = new SelectList(GenreLst);
+
+        //    var movies = from m in db.Movies
+        //                 select m;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        movies = movies.Where(s => s.Title.Contains(searchString));
+        //    }
+
+        //    if (!string.IsNullOrEmpty(movieGenre))
+        //    {
+        //        movies = movies.Where(x => x.Genre == movieGenre);
+        //    }
+
+        //    return View(movies);
+        //}
+
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string movieGenre, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var GenreLst = new List<string>();
 
             var GenreQry = from d in db.Movies
@@ -34,8 +79,8 @@ namespace YayOrNay.Controllers
             GenreLst.AddRange(GenreQry.Distinct());
             ViewBag.movieGenre = new SelectList(GenreLst);
 
-            var movies = from m in db.Movies
-                         select m;
+            var movies = from s in db.Movies
+                         select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -47,10 +92,27 @@ namespace YayOrNay.Controllers
                 movies = movies.Where(x => x.Genre == movieGenre);
             }
 
-            return View(movies);
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    movies = movies.OrderByDescending(s => s.Title);
+                    break;
+                case "Date":
+                    movies = movies.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "date_desc":
+                    movies = movies.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                default:
+                    movies = movies.OrderBy(s => s.Title);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(movies.ToPagedList(pageNumber, pageSize));
         }
-
-
 
 
 
