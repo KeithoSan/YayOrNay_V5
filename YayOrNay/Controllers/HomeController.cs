@@ -32,7 +32,7 @@ namespace YayOrNay.Controllers
 
         }
 
-
+        [OutputCache(Duration =60)]
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
 
@@ -64,7 +64,7 @@ namespace YayOrNay.Controllers
                              Certificate = r.Certificate,
                              ReleaseDate = r.ReleaseDate,
                              CountOfReviews = r.Reviews.Count()
-                         }).ToPagedList(page, 1);
+                         }).ToPagedList(page, 3);
 
 
 
